@@ -38,9 +38,14 @@ public class Main : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DelayedRestart(float delay)
     {
-        
+        //Restart();
+        Invoke("Restart", delay);
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene("_Scene_o");
+    }
+
 }
