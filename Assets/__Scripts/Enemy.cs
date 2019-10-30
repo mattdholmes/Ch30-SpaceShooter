@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     [Header("Set in Inspector")]
     public float speed = 10f;
     public float fireRate = 0.3f;
-    public float score = 100;
+    public float health = 10;
+    public int score = 100;
     private BoundsCheck bndCheck;
 
     void Awake()
@@ -32,11 +33,12 @@ public class Enemy : MonoBehaviour
     {
         Move();
 
-        if (bndCheck != null && !bndCheck.isOnScreen)
+        if (bndCheck != null && bndCheck.offDown)
         {
-            if (pos.y < bndCheck.camHeight - bndCheck.camWidth)
+            
+            if (pos.y < (bndCheck.camHeight) - bndCheck.camWidth)
             {
-                Destroy(gameObject);
+               Destroy(gameObject);
             }
         }
     }

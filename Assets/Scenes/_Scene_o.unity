@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,6 +192,8 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669907}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: __Main Camera
   m_TagString: MainCamera
@@ -263,6 +265,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b8fcd0241f5a74b813f7fe326b5a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEnemies:
+  - {fileID: 8883371343797634447, guid: 28bbaa3ced2f28445b8a677e5e87c985, type: 3}
+  enemySpawnPerSecond: 0.5
+  enemyDefaultPadding: 1.5
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47953443d5684be4ba763f5bc73455f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  keepOnScreen: 0
+  isOnScreen: 1
+  camWidth: 0
+  camHeight: 0
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0
 --- !u!1 &967176127
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967176128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: __Cockpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +345,7 @@ GameObject:
   - component: {fileID: 1311438042}
   - component: {fileID: 1311438041}
   - component: {fileID: 1311438040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +436,7 @@ GameObject:
   - component: {fileID: 1422694631}
   - component: {fileID: 1422694630}
   - component: {fileID: 1422694629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +528,7 @@ GameObject:
   - component: {fileID: 1794764569}
   - component: {fileID: 1794764568}
   - component: {fileID: 1794764567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +571,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794764565}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -594,9 +633,9 @@ GameObject:
   - component: {fileID: 2103693658}
   - component: {fileID: 2103693657}
   - component: {fileID: 2103693660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: __Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,7 +671,7 @@ MonoBehaviour:
   speed: 30
   rollMult: -45
   pitchMult: 30
-  shieldLevel: 1
+  _shieldLevel: 1
 --- !u!4 &2103693659
 Transform:
   m_ObjectHideFlags: 0
@@ -667,72 +706,7 @@ MonoBehaviour:
   isOnScreen: 1
   camWidth: 0
   camHeight: 0
---- !u!1001 &8883371343918873615
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8883371343797634447, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883371343797634444, guid: 28bbaa3ced2f28445b8a677e5e87c985,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 28bbaa3ced2f28445b8a677e5e87c985, type: 3}
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0

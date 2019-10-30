@@ -10,12 +10,14 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     [Header("Set Dynamically")]
-    public float shieldLevel = 1;
+    [SerializeField]
+    private float _shieldLevel = 1;
+    private GameObject lastTriggerGo = null;
 
 
     private void Awake()
     {
-        if( S == null)
+        if (S == null)
         {
             S = this;
         }
@@ -35,5 +37,40 @@ public class Hero : MonoBehaviour
         pos.y += yAxis * speed * Time.deltaTime;
         transform.position = pos;
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
+    }
+    void OnTriggerEnter(Collider other) {
+        Transform rootT = other.gameObject.transform.root;
+        GameObject go = rootT.gameObject;
+        //print("Triggered:" + go.name);
+        if (go == lastTriggerGo)
+        {
+            return;
+        }
+        lastTriggerGo = go;
+        if (go.tag == "Enemy")
+        {
+            shieldLevel--;
+            Destroy(go);
+        }
+        else
+        {
+            print("Triggered by non-Enemy:" + go.name);
+        }
+    }
+    public float shieldLevel
+    {
+        get
+        {
+            return(_shieldLevel);
+        }
+        set
+        {
+            _shieldLevel = Mathf.Min(value, 4);
+
+            if (value < 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
